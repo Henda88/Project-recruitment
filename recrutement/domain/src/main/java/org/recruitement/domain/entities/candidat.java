@@ -1,4 +1,4 @@
-package org.domain.entities;
+package org.recruitement.domain.entities;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package org.domain.config;
+package org.recruitement.domain.config;
 
 import java.util.Properties;
 
@@ -7,6 +7,7 @@ import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -21,12 +22,16 @@ import com.zaxxer.hikari.HikariDataSource;
 
 // Configuring Spring Data JPA; configure the base packages that are scanned
 // when Spring Data JPA creates implementations for our repository interfaces
-@EnableJpaRepositories(basePackages = { "net.petrikainulainen.springdata.jpa.todo" })
+@EnableJpaRepositories(basePackages = { "org.recruitement.domain.repositories" })
 
 //Enabling Annotation-Driven Transaction Management
 @EnableTransactionManagement
 public class PersistenceContext {
 
+	@Configuration
+    @PropertySource("classpath:application.properties")
+    static class ApplicationProperties {}
+	
 	/**Configuring the Datasource Bean**/
 	@Bean(destroyMethod = "close")
 	DataSource dataSource(Environment env) {
@@ -45,7 +50,7 @@ public class PersistenceContext {
 		LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
 		entityManagerFactoryBean.setDataSource(dataSource);
 		entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-		entityManagerFactoryBean.setPackagesToScan("net.petrikainulainen.springdata.jpa.todo");
+		entityManagerFactoryBean.setPackagesToScan("org.recruitement.domain.entities");
 
 		Properties jpaProperties = new Properties();
 
