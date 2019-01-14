@@ -9,26 +9,29 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table( name ="admin")
-public class admin implements Serializable {
+@Table(name = "utilisateur")
+public class Utilisateur implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id;
 	private String nom;
 	private String prenom;
 	private String email;
+	private Role role;
 
-	public admin() {
+	public Utilisateur() {
 		super();
 	}
 
-	public admin(String nom, String prenom, String email) {
+	public Utilisateur(String nom, String prenom, String email, Role role) {
+		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;
+		this.role = role;
 	}
 
 	public String getId() {
@@ -61,6 +64,14 @@ public class admin implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
 }

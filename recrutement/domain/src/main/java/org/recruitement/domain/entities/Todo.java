@@ -20,16 +20,16 @@ public class Todo {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
  
-    @Column(name = "creation_time", nullable = false)
+   /* @Column(name = "creation_time", nullable = false)
     @Type(type = "org.jadira.usertype.dateandtime.threeten.PersistentZonedDateTime")
-    private ZonedDateTime creationTime;
+    private ZonedDateTime creationTime;*/
  
     @Column(name = "description", length = 500)
     private String description;
  
-    @Column(name = "modification_time")
+    /*@Column(name = "modification_time")
     @Type(type = "org.jadira.usertype.dateandtime.threeten.PersistentZonedDateTime")
-    private ZonedDateTime modificationTime;
+    private ZonedDateTime modificationTime;*/
  
     @Column(name = "title", nullable = false, length = 100)
     private String title;
